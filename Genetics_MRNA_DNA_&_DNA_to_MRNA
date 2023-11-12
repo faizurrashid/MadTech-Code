@@ -1,0 +1,661 @@
+#This Project was designed for Bio-Informatics Genetics to change from the MRNA_to_DNA on basis of entered Value.
+#include<iostream.h>
+#include<conio.h>
+#include<fstream.h>
+#include<stdio.h>
+#include<process.h>
+#include<ctype.h>
+#include<iomanip.h>
+#include<string.h>
+#include<dos.h>
+#include<graphics.h>
+#include<stdlib.h>
+//to know the no of blank spaces through file handling
+class str
+{
+ char str1[50];
+ char str2[50];
+ char mrna1[3],mrna2[3];
+ char dna[20],dna1[3];
+  int bspace;
+  char s;
+  int alpha;
+  int x,y,x1,y1;
+
+ public:
+     int p,q,subch, headch;
+     char ans;
+     int i,j;
+     str()
+     {  alpha=0;
+	bspace=0;
+	x=25;y=10;
+	x1=25,y1=20;
+	j=0;
+     }
+    void introdxn();
+    void start();
+    void AMINO_MRNA();
+    void MRNA_DNA();
+    void DNA_MRNA();
+    //void MRNA_AMINO();
+    void mr_dn();
+    void dn_mr();
+    void main_menu();
+    void intro_dna();
+    void dna_verifcn();
+
+ };
+
+ void str::start()
+ {
+ clrscr();
+ ofstream ofile("Dna.dat",ios::out);
+
+ gotoxy(x,y);
+ textbackground(BLUE);
+// textcolor(RED+BLINK);
+ textcolor(RED);
+ //delay(20);
+ cprintf("Conversion of MRNA TO DNA");
+ cout<<"\nn";
+
+ //textcolor(BLUE);
+ gotoxy(x-8,y+2);
+ cprintf(" *** List Of Abbreviation of Amino Acid  *** ");
+ cout<<"\nn";
+ gotoxy(x-8,y+4);
+ cprintf(" A C D E F G H I K L M N P Q R S T V W Y  ");
+
+ gotoxy(x1,y1);
+ cout<<"\n\n\n     Enter Any One Amino Acid Sequence (In Capital):  ";
+ gets(str1);
+ ofile<<str1;
+ ofile.close();
+ //getch();
+ //clrscr();
+
+
+ }
+
+ void str::AMINO_MRNA()
+ {
+
+ ifstream ifile("Dna.dat",ios::in);
+
+   cout<<setw(10)<<"\n	Amino Acid is             :  ";
+
+
+ while(ifile)
+ {
+ //cout<<"string is:";
+ //ifile.getline(str,50);
+	 if(!ifile)
+	 {
+		cout<<"file does not exist      	 :  ";
+		 exit(1);
+	 }
+	 else
+	 {
+
+
+		 ifile.get(s);
+
+		   if(isalpha(s)&& s=='A')
+		   {
+		      strcpy(mrna1,"GCU");
+		      cout<<"Alanine";
+		      cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1<<"\n";
+		      break;
+		   }
+
+
+		   if(isalpha(s)&& s=='C')
+		   {
+		       strcpy(mrna1,"UGC");
+		       cout<<"Cysteine";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+		   }
+
+		   if(isalpha(s)&& s=='D')
+		   {
+		       strcpy(mrna1,"GAU");
+		       cout<<"Aspartic Acid";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		    }
+
+		   if(isalpha(s)&& s=='E')
+		   {
+		       strcpy(mrna1,"GAA");
+		       cout<<"Glutamic Acid";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+		   }
+		   if(isalpha(s)&& s=='F')
+		   {
+		       strcpy(mrna1,"UUU");
+		       cout<<"Phenylalanine";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+		   }
+		   if(isalpha(s)&& s=='G')
+		   {
+		       strcpy(mrna1,"GGA");
+		       cout<<"Glycine";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		   if(isalpha(s)&& s=='H')
+		   {
+		       strcpy(mrna1,"CAU");
+		       cout<<"Histidine";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		   if(isalpha(s)&& s=='I')
+		   {
+		       strcpy(mrna1,"AUC");
+		       cout<<"Isoieucine";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		    if(isalpha(s)&& s=='K')
+		   {
+		       strcpy(mrna1,"AAA");
+		       cout<<"Lysine";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		  if(isalpha(s)&& s=='L')
+		   {
+		       strcpy(mrna1,"CUG");
+		       cout<<"Leucine";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		    if(isalpha(s)&& s=='M')
+		   {
+		       strcpy(mrna1,"AUG");
+		       cout<<"Methionine";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		   if(isalpha(s)&& s=='N')
+		   {
+		       strcpy(mrna1,"AAC");
+		       cout<<"Asparagine";
+
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		   if(isalpha(s)&& s=='P')
+		   {
+		       strcpy(mrna1,"CCU");
+		       cout<<"Proline";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		   if(isalpha(s)&& s=='Q')
+		   {
+		       strcpy(mrna1,"CAA");
+		       cout<<"Glutamine";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		   if(isalpha(s)&& s=='R')
+		   {
+		       strcpy(mrna1,"CGA");
+		       cout<<"Arginine";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		   if(isalpha(s)&& s=='S')
+		   {
+		       strcpy(mrna1,"UCU");
+		       cout<<"Serine";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		   if(isalpha(s)&& s=='T')
+		   {
+		       strcpy(mrna1,"ACC");
+		       cout<<"Threonine";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		   if(isalpha(s)&& s=='V')
+		   {
+		       strcpy(mrna1,"GUC");
+		       cout<<"Valine";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		   if(isalpha(s)&& s=='W')
+		   {
+		       strcpy(mrna1,"UGG");
+		       cout<<"Tryptophan";
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+
+		   }
+		   if(isalpha(s)&& s=='Y')
+		   {
+		       strcpy(mrna1,"UAC");
+		       cout<<"Tyrosine";
+
+		       cout<<setw(9)<<"\n\n	MRNA group is  		  :  "<<mrna1;
+		       break;
+		   }
+
+
+
+
+	 }
+
+
+ }
+
+      //cout<<setw(10)<<"\n\n  	DNA Group is	          :  ";
+
+
+
+ ifile.close();
+ }
+
+ void str::MRNA_DNA()
+ {
+	for(i=0;i<strlen(mrna1);i++)
+	{
+	  if(mrna1[i]=='A')
+	     mrna1[i]='T';
+	    if(mrna1[i]=='G')
+	      mrna1[i]='C';
+	     if(mrna1[i]=='U')
+		 mrna1[i]='A';
+	      if(mrna1[i]=='C')
+		    mrna1[i]='G';
+
+	}
+
+
+ 
+
+	 cout<<setw(10)<<"\n\n  	DNA Group is	          :  "<<mrna1;
+	 getch();
+
+ }
+
+ void str::dna_verifcn()
+ {
+  int r;
+ // clrscr();
+      gotoxy(20,3);
+      cout<<"Loading";
+      for(r=20;r<=70;r++)
+      {
+	  gotoxy(r,24);
+	  cout<<"..";
+	  delay(200);
+       }
+       for(int i=0;i<strlen(dna);i++)
+       {
+	   if(dna[i]!=' '|| dna[i]!=',')
+	    {
+	     dna1[j]=dna[i];
+	    }
+
+		   if(strcmp("UAA",dna1) > 0)
+			 break;
+			if(strcmp("UGA",dna1) > 0)
+			   break;
+			  if(strcmp("UAG",dna1) > 0)
+			    break;
+
+	}
+
+
+
+ }
+
+
+ void str::DNA_MRNA()
+ {
+	   int k;
+
+	   normvideo();
+	   clrscr();
+
+
+
+		for(int m=k;m<=j;m++)
+		{
+
+		 if(dna1[m]=='A')
+		    dna1[m]='U';
+			if(dna1[m]=='T')
+			  dna1[m]='A';
+			    if(dna1[m]=='C')
+			     dna1[m]='G';
+				if(dna1[m]=='G')
+				  dna1[m]='C';
+
+		}
+
+
+	    gotoxy(24,12);
+	    cout<<" MRNA Group is     :   "<<dna1;
+
+}
+
+void str::mr_dn()
+{
+  clrscr();
+  //char ans;
+ // do
+  // {
+     clrscr();
+     //start();
+     gotoxy(30,6);
+     cout<<" Conversion of MRNA To DNA ";
+     gotoxy(30,7);
+     cout<<"***************************";
+     gotoxy(25,10);
+     cout<<" 1. MRNA Group ";
+     gotoxy(25,12);
+     cout<<" 2. DNA Group ";
+     gotoxy(25,14);
+     cout<<" 3. Return to Main Menu " ;
+
+     gotoxy(25,16);
+     cout<<" What do you want to do (1,2,3) : ";
+     cin>>subch;
+
+    // start();
+
+
+
+     if(subch==1)
+       AMINO_MRNA();
+      if(subch==2)
+	MRNA_DNA();
+	 if(subch==3)
+	   main_menu();
+
+}
+
+void str::intro_dna()
+{
+     clrscr();
+     gotoxy(5,2);
+     cout<<"Enter Sequence of three characters like AAA,CAA,GUC,UGG etc.\n";
+     cout<<"Enter group of charactetrs by putting comma or space \n ";
+     gotoxy(30,6);
+     cout<<" Back Conversion Of DNA To MRNA ";
+     gotoxy(30,7);
+     cout<<"*********************************";
+
+     gotoxy(25,10);
+     cout<<"Enter DNA Sequence  : ";
+     gets(dna);
+
+}
+
+void str::dn_mr()
+{
+   clrscr();
+   char ans1;
+   int subch2;
+
+     gotoxy(30,6);
+     cout<<" Conversion Of DNA To MRNA ";
+     gotoxy(30,7);
+     cout<<"***************************";
+     gotoxy(25,10);
+     cout<<"\n 1. MRNA Group ";
+     gotoxy(25,12);
+     cout<<"\n 2. Amino Group ";
+     gotoxy(25,14);
+     cout<<"\n 3. Exit " ;
+
+     gotoxy(25,16);
+     cout<<" What do you want to do (1,2,3) :  ";
+     cin>>subch2;
+
+     if(subch2==1)
+	DNA_MRNA();
+      if(subch2==2)
+	 //MRNA_AMINO();
+	 if(subch2==3)
+	   exit(0);
+
+}
+
+void str::main_menu()
+{
+     int headch;
+     char ans;
+     do
+	{
+
+	clrscr();
+
+	gotoxy(30,6);
+	cout<<" MAIN - MENU " ;
+	gotoxy(30,7);
+	cout<<"*************" ;
+	gotoxy(25,10);
+	cout<<"1. Conversion Of MRNA TO DNA ";
+	gotoxy(25,12);
+
+	cout<<"2. Conversion Of DNA TO MRNA ";
+	gotoxy(25,14);
+	cout<<"3. Exit ";
+
+	gotoxy(25,16);
+	cout<<" What do you want to do (1,2,3) : " ;
+	cin>>headch;
+
+		      if(headch==3)
+			exit(0);
+			 if(headch==2)
+			   {
+			      intro_dna();
+			      dna_verifcn();
+			      dn_mr();
+			   }
+			   if(headch==1)
+			   {
+				start();
+				mr_dn();
+			    }
+
+
+
+	gotoxy(25,22);
+	cout<<"Do you want to continue..........(y/n) " ;
+	cin>>ans;
+
+	} while(ans=='Y' || ans=='y');
+
+ }
+
+void str::introdxn()
+{
+	int rt;
+	float u,v,f,r,ob,m,im,x,y,x1,y1,r1,r2,mu;
+	float yo4,yo3,yo2,yo1,yo0,yo,xx,yy,z,y0,e,n,k,x0,t,f0;
+
+	 int midx = getmaxx() / 2;
+	 int midy = getmaxy() / 2;
+	 setcolor(getmaxcolor());
+
+	 int col=rand();
+	 for(int i=1;i<=200;i++)
+	 {
+		col=rand();
+		setcolor(col);
+		circle(midx, midy, i);
+		setcolor(col+1);
+		circle(midx, midy, 200-i);
+
+		delay(25);
+
+		setcolor(BLACK);
+	 //circle(midx, midy, i);
+		circle(midx, midy, 200-i);}
+	 /* clean up */
+		cleardevice();
+		setcolor(WHITE);
+
+		delay(20);
+	 //project wording starts here
+
+
+
+	 circle(midx+4,midy+256,50);
+	 circle(midx+16,midy+64,50);
+	 circle(midx+64,midy+16,50);
+	 circle(midx+256,midy+4,50);
+
+	delay(20);
+
+	  setbkcolor(WHITE);
+	  for(i=1;i<=120;i++)
+	 {
+
+	  col=rand();
+	  setbkcolor(BLACK);
+
+	setcolor(col);
+	 settextstyle(TRIPLEX_FONT,HORIZ_DIR,3);
+	 
+	 setcolor(col+2+BLINK);
+	 outtextxy(midx-250,0+(i*2),  "           DEVELOPER               ");
+	 setcolor(col-2+BLINK);
+	 outtextxy(midx-250,476-(i*2),"                      & HIS TEAM");
+
+	 delay(25);
+
+	setcolor(BLACK);
+	 outtextxy(midx-250,0+(i*2),  "           DEVELOPED               ");
+	  outtextxy(midx-250,476-(i*2),"                    FAIZUR RASHID");
+	 }
+	cleardevice();
+
+	 setcolor(col);
+	settextstyle(TRIPLEX_FONT,HORIZ_DIR,3);
+	outtextxy(midx-250,midy,     "GUIDED FOR ZAINEB & ETU");
+
+	//outtextxy(midx,midy,"PROJECT");
+
+	delay(25);
+
+	for(i=-200;i<=50;i++)
+	while(!kbhit());
+	    {
+	setbkcolor(BLACK);
+	col=rand();
+	setcolor(col+BLINK);
+	   settextstyle(TRIPLEX_FONT,HORIZ_DIR,3);
+	    outtextxy(midx-250,midy,"PROJECT BY AUTHOR & HIS TEAM");
+	  setcolor(WHITE);
+	  outtextxy(midx-i,midy+175,"L   O   A   D   I   N   G...");
+	  delay(5);
+	setcolor(BLACK);
+		outtextxy(midx-i,midy+175,"L   O   A   D   I   N   G...");
+	 }
+	//gobbler.cpp
+		  setcolor(BLUE+BLINK);
+	outtextxy(midx-50,midy+175,"Press Any Key To Continue...");
+
+
+	 for(z=1;z<=320;z++)
+	   {
+	   //triangle begins here
+	   setcolor(WHITE);
+	   line(midx-50,midy+50,midx,midy-50);
+	   line(midx-50,midy+50,midx+50,midy+50);
+	   //triangle ends
+	   //ray begins here
+	  setbkcolor(BLACK);
+	  setcolor(WHITE);
+	  line(0,0,z,z-75);
+	  delay(10);
+	  cleardevice();
+	}
+
+	line(midx-50,midy+50,midx,midy-50);
+	line(midx,midy-50,midx+50,midy+50);
+	line(midx-50,midy+50,midx+50,midy+50);
+	line(0,0,midx,midy);
+	setcolor(9);
+	line(midx,midy,midx+200,midy-120);
+	setcolor(10);
+	line(midx,midy,midx+200,midy-80);
+	setcolor(11);
+	line(midx,midy,midx+200,midy-40);
+	setcolor(12);
+	line(midx,midy,midx+200,midy-0);
+	setcolor(13);
+	line(midx,midy,midx+200,midy+40);
+	setcolor(14);
+	line(midx,midy,midx+200,midy+80);
+
+	// Changed by me
+
+	setcolor(RED);
+	line(midx,midy,midx+200,midy+120);
+
+	getch();
+
+	setcolor(WHITE);
+	settextstyle(3,HORIZ_DIR,6);
+	outtextxy(midx+200,midy-160,"G");
+	outtextxy(midx+200,midy-120,"E");
+	outtextxy(midx+200,midy-80,"N");
+	outtextxy(midx+200,midy-40,"T");
+	outtextxy(midx+200,midy,"I");
+	outtextxy(midx+200,midy+40,"C");
+	outtextxy(midx+200,midy+75,"S");
+
+	getch();
+
+	cleardevice();
+//        clrscr();
+
+
+}
+
+
+void main()
+{
+
+	int hi1,hi2,hi3,hi4;
+	char ch;
+	int gdriver = DETECT, gmode, errorcode;
+	initgraph(&gdriver, &gmode, "c:\\tc\\bgi");
+
+	str obj;
+	obj.introdxn();
+	clrscr();
+
+	obj.main_menu();
+	//getch();
+
+}
